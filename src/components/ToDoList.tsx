@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
-import { useState } from 'react';
-import FullList from './FullList';
-import ListItem from './ListItem';
+import { useState, useEffect } from 'react';
 
 interface Task {
     id: number;
@@ -10,51 +8,64 @@ interface Task {
 }
 
 function ToDoList(): React.JSX.Element {
-    const fullList = FullList.instance
     
     let btnStyle: string = 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full';
+    
+    const [tasks, setTasks] = useState<Task[]>(() => {
+      try {
+        const storedTasks = localStorage.getItem('tasks');
+        return storedTasks ? JSON.parse(storedTasks) : [];
+      } catch(error: any){
+        console.error(error.message); 
+      }
 
-    const [tasks, setTasks] = useState<Task[]>([]);
-
+    });
     const [taskText, setTaskText] = useState('');
 
+    useEffect(() => {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
+
     const addTask = () => {
-        if (taskText.trim() === '') return;
-        let id = Date.now();
-        const newItem = new ListItem(id.toString(), taskText)
-        fullList.addItem(newItem)
-        setTasks([...tasks, { id, text: taskText }]);    
-        setTaskText('');
+      if (taskText.trim() === '') return;
+      const newTask = { id: Date.now(), text: taskText };
+      setTasks([...tasks, newTask]);
+      setTaskText('');
     };
 
     const removeTask = (id: number) => {
-        setTasks(tasks.filter(task => task.id !== id));
-        fullList.removeItem(id.toString())
+      const updatedTasks = tasks.filter((task) => task.id !== id);
+      setTasks(updatedTasks);
     };
 
     return (
-        <div>
-          <h1>To-Do List</h1>
-          <input
-            type="text"
-            value={taskText}
-            onChange={(e) => setTaskText(e.target.value)}
-            placeholder="Add a new task"
-          />
-          <button onClick={addTask} className="add-button">
-            Add Task
-          </button>
-          <ul>
-            {tasks.map(task => (
-              <li key={task.id}>
-                {task.text}
-                <button onClick={() => removeTask(task.id)} className={btnStyle}>
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div>
+          <div>
+            <h1>To-Do List</h1>
+            <input
+              type="text"
+              value={taskText}
+              onChange={(e) => setTaskText(e.target.value)}
+              placeholder="Add a new task"
+            />
+            <button onClick={addTask} className="add-button">
+              Add Task
+            </button>
+          </div>
+          <div>
+            <h2>Task List</h2>
+            <ul>
+              {tasks.map(task => (
+                <li key={task.id}>
+                  {task.text}
+                  <button onClick={() => removeTask(task.id)} className={btnStyle}>
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+      </div>
       );
     };
 

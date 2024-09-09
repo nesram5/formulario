@@ -1,11 +1,11 @@
 // pages/index.tsx
 import React from 'react';
-import ToDoList from '@/components/ToDoList';
+import TrelloLikeNotes from '@/components/TrelloLikeNotes';
 
 const Home: React.FC = () => {
   return (
     <div>
-      <ToDoList></ToDoList>
+      <TrelloLikeNotes></TrelloLikeNotes>
     </div>
   );
 };

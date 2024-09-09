@@ -23,11 +23,11 @@ export default class FullList implements List {
         const storedList: string | null = localStorage.getItem("myList")
         if(typeof storedList !== "string")return
 
-        const parsedList: {_id: string, _item: string}[] = JSON.parse(storedList)
-        parsedList.forEach(itemObj => {
-            const newListItem = new ListItem(itemObj._id, itemObj._item)
-            FullList.instance.addItem(newListItem)
-        })
+        //const parsedList: {_id: string, _item: string}[] = JSON.parse(storedList)
+        //parsedList.forEach(itemObj => {
+        //    const newListItem = new ListItem(itemObj._id, itemObj._item)
+        //    FullList.instance.addItem(newListItem)
+        //})
     }
     
     save(): void {
