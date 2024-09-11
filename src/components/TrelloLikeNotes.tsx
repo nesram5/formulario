@@ -69,7 +69,7 @@ export default function TrelloLikeNotes() {
       setColumns(newColumns)
       return
     }
-
+    
     const sourceColumn = columns.find((col) => col.id === source.droppableId)
     const destColumn = columns.find((col) => col.id === destination.droppableId)
 
@@ -291,7 +291,6 @@ export default function TrelloLikeNotes() {
                               variant="ghost"
                               onClick={() => archiveCompletedTasks(column.id)}
                             >
-                              <Archive className="h-4 w-4" />
                             </Button>
                           </div>
                         </div>
