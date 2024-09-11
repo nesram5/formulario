@@ -1,7 +1,7 @@
 Trello Like App
 =
 
-Using Typescript and React this code produce a Notes app to write and save on localstorage thoughts you want keep for later or things you need to-do.
+Using Next JS, Typescript and React and Tailwind CSS this code produce a Notes app to save on localstorage things you need to-do or interesting thoughts to keep.
 
 To init the app you must run:
 
