@@ -1,7 +1,7 @@
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/button"
 import { useState } from "react"
 import { Edit2, Save, Trash2 } from "lucide-react"
 import { Column } from '@/lib/types'

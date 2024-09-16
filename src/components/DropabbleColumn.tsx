@@ -1,9 +1,7 @@
 import { Draggable , Droppable } from "react-beautiful-dnd"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Plus, Edit2, Save, Trash2, Settings } from "lucide-react"
-import { SketchPicker } from 'react-color'
+import Button from "@/components/ui/button"
+import { Plus, Edit2, Save, Trash2 } from "lucide-react"
 import DroppableNote from "./DroppableNote"
 import { useState, useRef } from "react"
 import { Column, Note } from '@/lib/types'
@@ -100,7 +98,7 @@ const DropabbleColumn: React.FC<ChildProps> = ({ columns, setColumns }) => {
                       {...provided.dragHandleProps}
                       className="flex-shrink-0 w-72"
                       >
-                      <div className="p-4 rounded-lg shadow" style={{ backgroundColor: column.backgroundColor }}>
+                      <div className="p-4 rounded-lg shadow">
                           <div className="flex items-center justify-between mb-4">
                           {editingColumn === column.id ? (
                               <div className="flex items-center">
@@ -121,25 +119,9 @@ const DropabbleColumn: React.FC<ChildProps> = ({ columns, setColumns }) => {
                               <h2 className="text-xl font-semibold">{column.title}</h2>
                           )}
                           <div className="flex space-x-2">
-                              <Popover>
-                              <PopoverTrigger asChild>
-                                  <Button size="sm" variant="ghost">
-                                  <Settings className="h-4 w-4" />
-                                  </Button>
-                              </PopoverTrigger>
-                              <PopoverContent className="w-80">
-                                  <div className="space-y-4">
-                                  <h3 className="font-medium">Column Background</h3>
-                                  <SketchPicker
-                                      color={column.backgroundColor}
-                                      onChangeComplete={(color) => setColumnBackground(column.id, color.hex)}
-                                  />
-                                  </div>
-                              </PopoverContent>
-                              </Popover>
                               <Button
                               size="sm"
-                              variant="ghost"
+                              variant="button"
                               onClick={() => startEditingColumn(column.id, column.title)}
                               >
                               <Edit2 className="h-4 w-4" />

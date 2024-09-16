@@ -2,20 +2,14 @@
 
 import { useState, useEffect } from "react"
 import { DragDropContext  } from "react-beautiful-dnd"
-import { Button } from "@/components/ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Settings } from "lucide-react"
-import { SketchPicker } from 'react-color'
 import DropabbleColumn from "./DropabbleColumn"
 import { Column } from '@/lib/types'
 
 export default function TrelloLikeNotes() {
   const [columns, setColumns] = useState<Column[]>([])
-  const [boardBackground, setBoardBackground] = useState("#f0f4f8")
 
   useEffect(() => {
     const savedColumns = localStorage.getItem("trelloLikeColumns")
-    const savedBackground = localStorage.getItem("trelloLikeBoardBackground")
     if (savedColumns) {
       setColumns(JSON.parse(savedColumns))
     } else {
@@ -25,18 +19,11 @@ export default function TrelloLikeNotes() {
         { id: "done", title: "Done", notes: [], backgroundColor: "#ffffff" },
       ])
     }
-    if (savedBackground) {
-      setBoardBackground(savedBackground)
-    }
   }, [])
 
   useEffect(() => {
     localStorage.setItem("trelloLikeColumns", JSON.stringify(columns))
   }, [columns])
-
-  useEffect(() => {
-    localStorage.setItem("trelloLikeBoardBackground", boardBackground)
-  }, [boardBackground])
 
   const onDragEnd = (result: any) => {
     const { source, destination, type } = result
@@ -75,23 +62,9 @@ export default function TrelloLikeNotes() {
   }
 
   return (
-    <div className="min-h-screen p-4" style={{ backgroundColor: boardBackground }}>
+    <div className="min-h-screen p-4">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-blue-900">Trello-like Notes</h1>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline"><Settings className="mr-2 h-4 w-4" /> Board Settings</Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-80">
-            <div className="space-y-4">
-              <h3 className="font-medium">Board Background</h3>
-              <SketchPicker
-                color={boardBackground}
-                onChangeComplete={(color) => setBoardBackground(color.hex)}
-              />
-            </div>
-          </PopoverContent>
-        </Popover>
       </div>
       <DragDropContext onDragEnd={onDragEnd}>
               
