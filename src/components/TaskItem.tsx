@@ -1,6 +1,6 @@
-import { TaskItemProps } from "@/interfaces/Items";
+import { TaskItemProps } from "@/interfaces/items";
   
-  export function TaskItem({ task, toggleComplete, deleteTask }: TaskItemProps) {
+  export default function TaskItem({ task, toggleComplete, deleteTask }: TaskItemProps) {
     return (
       <div className="listItem">
         <input 

@@ -1,4 +1,4 @@
-import { TaskFormProps } from '@/interfaces/Items';
+import { TaskFormProps } from '@/interfaces/items';
 import { useState } from 'react';
 
 export default function TaskForm({ addTask }: TaskFormProps) {

@@ -1,10 +1,10 @@
 "use client"
 import '@/styles/todoList.scss';
 import { useState , useEffect } from 'react';
-import  TaskForm  from './TaskForm';
-import { TaskList } from './TaskList';
-import { Item } from '@/interfaces/Items';
-import { loadTasksFromLocalStorage, saveTasksToLocalStorage } from '@/services/TodoServices';
+import  TaskForm  from '@/components/taskForm';
+import { TaskList } from '@/components/taskList';
+import { Item } from '@/interfaces/items';
+import { loadTasksFromLocalStorage, saveTasksToLocalStorage } from '@/services/todoServices';
 
 export const TodoList: React.FC = () => {
   

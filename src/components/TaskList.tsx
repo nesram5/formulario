@@ -1,5 +1,5 @@
-import { TaskListProps } from "@/interfaces/Items";
-import { TaskItem } from "./TaskItem";
+import { TaskListProps } from "@/interfaces/items";
+import TaskItem  from "@/components/taskItem";
 
   export function TaskList({ tasks, toggleComplete, deleteTask }: TaskListProps) {
     return (

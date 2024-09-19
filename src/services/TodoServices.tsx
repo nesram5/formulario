@@ -1,6 +1,6 @@
 "use client"
 
-import { Item } from "@/interfaces/Items";
+import  { Item }  from "@/interfaces/items";
 
 export const loadTasksFromLocalStorage = (): Item[] => {
     const tasks = localStorage.getItem('tasks');
