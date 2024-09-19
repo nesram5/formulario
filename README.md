@@ -1,5 +1,4 @@
-
-ToDO App
+## ToDo App
 
 Organize you daily work with this app.
 
