@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //import './globals.css';
 export const metadata = {
   title: 'Next.js',
@@ -14,4 +15,20 @@ export default function RootLayout({
       <body>{children}</body>
     </html>
   )
+=======
+import "@/styles/todoList.scss";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+      </body>
+    </html>
+  );
+>>>>>>> ce6ce93 (feat: renewed code from scrash)
 }
