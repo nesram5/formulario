@@ -2,8 +2,8 @@ import { TaskItemProps } from "@/interfaces/Items";
   
   export function TaskItem({ task, toggleComplete, deleteTask }: TaskItemProps) {
     return (
-      <div>
-        <input
+      <div className="listItem">
+        <input 
           title="checkbox"
           type="checkbox"
           checked={task.completed}

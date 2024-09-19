@@ -23,7 +23,7 @@ export default function TaskForm({ addTask }: TaskFormProps) {
         }
         placeholder="Enter a new task"
       />
-      <button type="submit">Add Task</button>
+      <button className='buttonForm' type="submit">Add Task</button>
     </form>
   );
 }

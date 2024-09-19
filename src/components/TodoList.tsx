@@ -7,8 +7,17 @@ import { Item } from '@/interfaces/Items';
 import { loadTasksFromLocalStorage, saveTasksToLocalStorage } from '@/services/TodoServices';
 
 export const TodoList: React.FC = () => {
-  const [tasks, setTasks] = useState<Item[]>(loadTasksFromLocalStorage());
+  
 
+  const [tasks, setTasks] = useState<Item[]>([]);
+  
+  useEffect(() => {
+    const loadPreviousTasks: Item[] = loadTasksFromLocalStorage(); 
+    if (loadPreviousTasks && loadPreviousTasks.length > 0) {
+      setTasks(loadPreviousTasks);
+    }
+  }, []);
+  
   useEffect(() => {
     saveTasksToLocalStorage(tasks);
   }, [tasks]);
@@ -37,7 +46,7 @@ export const TodoList: React.FC = () => {
   return (
     <div>
       <h1>My ToDo List </h1>
-      <div id='listItems'>
+      <div className='toDoBody'>
       <TaskForm addTask={addTask} />
       <TaskList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask} />
       </div>
