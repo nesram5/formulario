@@ -1,4 +1,7 @@
-< Trello Like App
+
+ToDO App
+
+Organize you daily work with this app.
 
 ```bash
 npm run dev
